@@ -32,7 +32,7 @@ import java.util.*;
  * Xulin Yang, 904904
  *
  * @create 2021-04-30 23:11
- * description:
+ * description: not useful now
  **/
 
 public class AutoContainerTest1 {
@@ -138,7 +138,7 @@ public class AutoContainerTest1 {
              * 9- Creating the cloudlet, container and VM lists for submitting to the broker.
              */
             cloudletList = AlibabaConstant.createContainerCloudletListConstant(brokerId, 20);
-            containerList = AlibabaConstant.createContainerList(brokerId, 9);
+            containerList = AlibabaConstant.createContainerList(brokerId, 5);
             vmList = AlibabaConstant.createVmList(brokerId);
 
             /**

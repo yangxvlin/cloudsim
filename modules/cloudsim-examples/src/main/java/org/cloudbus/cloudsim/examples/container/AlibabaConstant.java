@@ -11,6 +11,7 @@ import org.cloudbus.cloudsim.container.containerVmProvisioners.ContainerVmPe;
 import org.cloudbus.cloudsim.container.containerVmProvisioners.ContainerVmPeProvisionerSimple;
 import org.cloudbus.cloudsim.container.containerVmProvisioners.ContainerVmRamProvisionerSimple;
 import org.cloudbus.cloudsim.container.core.*;
+import org.cloudbus.cloudsim.container.schedulers.ContainerCloudletSchedulerDynamicWorkload;
 import org.cloudbus.cloudsim.container.schedulers.ContainerCloudletSchedulerTimeShared;
 import org.cloudbus.cloudsim.container.schedulers.ContainerSchedulerTimeShared;
 import org.cloudbus.cloudsim.container.schedulers.ContainerVmSchedulerTimeSharedOverSubscription;
@@ -47,7 +48,7 @@ public class AlibabaConstant {
         for (int i = 0; i < numberOfCloudlets; i++) {
             ContainerCloudlet cloudlet = new ContainerCloudlet(
                     IDs.pollId(ContainerCloudlet.class),
-                    MIPS_UNIT * 4,
+                    MIPS_UNIT * 4000 + i * 8000,
                     1,
                     fileSize,
                     outputSize,
@@ -103,7 +104,7 @@ public class AlibabaConstant {
                         0L, // no data
                         0L, // no data
                         "Xen",
-                        new ContainerCloudletSchedulerTimeShared(),
+                        new ContainerCloudletSchedulerDynamicWorkload(numPe * MIPS_UNIT, numPe),
                         org.cloudbus.cloudsim.examples.container.ConstantsExamples.SCHEDULING_INTERVAL
                 ));
 
