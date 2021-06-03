@@ -217,26 +217,26 @@ public class ContainerHost {
     public boolean containerVmCreate(ContainerVm vm) {
         //Log.printLine("Host: Create VM???......" + vm.getId());
         if (getStorage() < vm.getSize()) {
-            Log.printConcatLine("[VmScheduler.containerVmCreate] Allocation of VM #", vm.getId(), " to Host #", getId(),
+            Log.printConcatLine(CloudSim.clock(), ": [VmScheduler.containerVmCreate] Allocation of VM #", vm.getId(), "_requested(", vm.getSize(), ")", " to Host #", getId(), "_available(", getStorage(), ")",
                     " failed by storage");
             return false;
         }
 
         if (!getContainerVmRamProvisioner().allocateRamForContainerVm(vm, vm.getCurrentRequestedRam())) {
-            Log.printConcatLine("[VmScheduler.containerVmCreate] Allocation of VM #", vm.getId(), " to Host #", getId(),
+            Log.printConcatLine(CloudSim.clock(), ": [VmScheduler.containerVmCreate] Allocation of VM #", vm.getId(), "_requested(", vm.getCurrentRequestedRam(), ")", " to Host #", getId(), "_available(", getContainerVmRamProvisioner().getAvailableRam(), ")",
                     " failed by RAM");
             return false;
         }
 
         if (!getContainerVmBwProvisioner().allocateBwForContainerVm(vm, vm.getCurrentRequestedBw())) {
-            Log.printConcatLine("[VmScheduler.containerVmCreate] Allocation of VM #", vm.getId(), " to Host #", getId(),
+            Log.printConcatLine(CloudSim.clock(), ": [VmScheduler.containerVmCreate] Allocation of VM #", vm.getId(), " to Host #", getId(),
                     " failed by BW");
             getContainerVmRamProvisioner().deallocateRamForContainerVm(vm);
             return false;
         }
 
         if (!getContainerVmScheduler().allocatePesForVm(vm, vm.getCurrentRequestedMips())) {
-            Log.printConcatLine("[VmScheduler.containerVmCreate] Allocation of VM #", vm.getId(), " to Host #", getId(),
+            Log.printConcatLine(CloudSim.clock(), ": [VmScheduler.containerVmCreate] Allocation of VM #", vm.getId(), " to Host #", getId(),
                     " failed by MIPS");
             getContainerVmRamProvisioner().deallocateRamForContainerVm(vm);
             getContainerVmBwProvisioner().deallocateBwForContainerVm(vm);

@@ -447,7 +447,7 @@ public class ContainerDatacenterBroker extends SimEntity {
         String datacenterName = CloudSim.getEntityName(datacenterId);
         for (ContainerVm vm : getVmList()) {
             if (!getVmsToDatacentersMap().containsKey(vm.getId())) {
-                Log.printLine(String.format("%s: %s: Trying to Create VM #%d in %s", CloudSim.clock(), getName(), vm.getId(), datacenterName));
+                Log.printLine(String.format("%s: %s: Trying to Create VM #%d in %s(#%s)", CloudSim.clock(), getName(), vm.getId(), datacenterName, datacenterId));
                 sendNow(datacenterId, CloudSimTags.VM_CREATE_ACK, vm);
                 requestedVms++;
             }
@@ -487,6 +487,8 @@ public class ContainerDatacenterBroker extends SimEntity {
                     cloudletsSubmitted++;
                     getCloudletSubmittedList().add(cloudlet);
                     successfullySubmitted.add(cloudlet);
+                } else {
+                    Log.printLine("cloudlet #" + cloudlet.getCloudletId() + " ------------------ ");
                 }
 
 
