@@ -252,12 +252,12 @@ public class ContainerDatacenterBroker extends SimEntity {
 
         if (result == CloudSimTags.TRUE) {
             if(vmId ==-1){
-                Log.printConcatLine("Error : Where is the VM");}
-            else{
+                Log.printConcatLine("Error : Where is the VM");
+            }else{
             getContainersToVmsMap().put(containerId, vmId);
             getContainersCreatedList().add(ContainerList.getById(getContainerList(), containerId));
 
-//            ContainerVm p= ContainerVmList.getById(getVmsCreatedList(), vmId);
+            // ContainerVm p= ContainerVmList.getById(getVmsCreatedList(), vmId);
             int hostId = ContainerVmList.getById(getVmsCreatedList(), vmId).getHost().getId();
             Log.printConcatLine(CloudSim.clock(), ": ", getName(), ": The Container #", containerId,
                      ", is created on Vm #",vmId
