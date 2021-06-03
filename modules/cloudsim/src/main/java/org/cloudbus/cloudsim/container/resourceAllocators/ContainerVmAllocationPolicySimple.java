@@ -124,7 +124,20 @@ public class ContainerVmAllocationPolicySimple extends ContainerVmAllocationPoli
     public void deallocateHostForVm(ContainerVm containerVm) {
         ContainerHost host = getVmTable().remove(containerVm.getUid());
         int idx = getContainerHostList().indexOf(host);
-        int pes = getUsedPes().remove(containerVm.getUid());
+
+        /*
+            without the if condition,
+            can have bug (containerVm.getUid() not exis in getUsedPes()) when
+            all cloudlets have same length on one Vm and some Vm have no cloudlets submitted
+
+            modified by Xulin
+         */
+        // int pes = getUsedPes().remove(containerVm.getUid());
+        int pes = 0;
+        if (getUsedPes().containsKey(containerVm.getUid())) {
+            pes = getUsedPes().remove(containerVm.getUid());
+        }
+
         if (host != null) {
             host.containerVmDestroy(containerVm);
             getFreePes().set(idx, getFreePes().get(idx) + pes);
