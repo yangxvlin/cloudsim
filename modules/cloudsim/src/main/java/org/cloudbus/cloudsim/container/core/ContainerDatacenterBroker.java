@@ -488,7 +488,7 @@ public class ContainerDatacenterBroker extends SimEntity {
                     getCloudletSubmittedList().add(cloudlet);
                     successfullySubmitted.add(cloudlet);
                 } else {
-                    Log.printLine("cloudlet #" + cloudlet.getCloudletId() + " ------------------ ");
+                    Log.printConcatLine(CloudSim.clock(), ": ", getName(), ": ","cloudlet #" + cloudlet.getCloudletId() + " not submitted as do not know which container for it");
                 }
 
 
