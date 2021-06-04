@@ -39,6 +39,16 @@ public class containerCloudSimTags {
     public static final int VM_NEW_CREATE = ContainerSimBASE + 11;
 
 
+    /**
+     * destroy inactive containers in data center
+     */
+    public static final int INACTIVE_CONTAINER_DESTROY = ContainerSimBASE + 12;
+
+    /**
+     * update containers to Vm mapping after containers destroyed in data center
+     */
+    public static final int INACTIVE_CONTAINER_DESTROY_ACK = ContainerSimBASE + 13;
+
     private containerCloudSimTags() {
         // TODO Auto-generated constructor stub
         /** Private Constructor */
