@@ -48,7 +48,7 @@ public class AlibabaConstant {
         for (int i = 0; i < numberOfCloudlets; i++) {
             ContainerCloudlet cloudlet = new ContainerCloudlet(
                     IDs.pollId(ContainerCloudlet.class),
-                    MIPS_UNIT * 4000 + i * 8000,
+                    MIPS_UNIT * (i+1),
                     1,
                     fileSize,
                     outputSize,
@@ -58,7 +58,6 @@ public class AlibabaConstant {
             );
             containerCloudletList.add(cloudlet);
             cloudlet.setUserId(brokerId);
-//            cloudlet.setContainerId(i);
         }
 
         return containerCloudletList;
@@ -98,7 +97,7 @@ public class AlibabaConstant {
                 containerList.add(new PowerContainer(
                         IDs.pollId(Container.class),
                         brokerId,
-                        numPe * MIPS_UNIT,
+                        MIPS_UNIT,
                         numPe,
                         (int) (Float.parseFloat(data[7]) * MEMORY_UNIT),
                         0L, // no data
@@ -127,12 +126,12 @@ public class AlibabaConstant {
         // ebmhfg5
         peList = new ArrayList<>();
         for (int j = 0; j < V_CPUS_8; j++) {
-            peList.add(new ContainerPe(j, new CotainerPeProvisionerSimple(74000)));
+            peList.add(new ContainerPe(j, new CotainerPeProvisionerSimple(7400)));
         }
         vmList.add(new PowerContainerVm(
                 IDs.pollId(ContainerVm.class),
                 brokerId,
-                74000,
+                7400,
                 32000,
                 6291456,
                 90000L, // VM storage
@@ -212,8 +211,8 @@ public class AlibabaConstant {
         ArrayList<ContainerVmPe> peList = new ArrayList<>();
         for (int j = 0; j < V_CPUS_8; ++j) {
             peList.add(new ContainerVmPe(j,
-                    // 3.7 GHz = 74000 MIPS by https://stackoverflow.com/a/16226441
-                    new ContainerVmPeProvisionerSimple(74000)));
+                    // 3.7 GHz = 7400 MIPS by https://stackoverflow.com/a/16226441
+                    new ContainerVmPeProvisionerSimple(7400)));
         }
 
         return new PowerContainerHostUtilizationHistory(

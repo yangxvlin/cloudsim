@@ -117,7 +117,7 @@ public class AutoContainerTest2 {
              * 9- Creating the cloudlet, container and VM lists for submitting to the broker.
              */
             cloudletList = AlibabaConstant.createContainerCloudletListConstant(brokerId, 20);
-            containerList = AlibabaConstant.createContainerList(brokerId, 5);
+            containerList = AlibabaConstant.createContainerList(brokerId, 20);
             vmList = AlibabaConstant.createVmList(brokerId);
             vmList.get(0).setHost(smallHost);
             vmList.get(1).setHost(mediumHost);
