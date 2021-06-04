@@ -846,9 +846,11 @@ public class ContainerVm {
      */
     public boolean isSuitableForContainer(Container container) {
 
-        return (getContainerScheduler().getPeCapacity() >= container.getCurrentRequestedMaxMips()&& getContainerScheduler().getAvailableMips() >= container.getWorkloadTotalMips()
-                && getContainerRamProvisioner().isSuitableForContainer(container, container.getCurrentRequestedRam()) && getContainerBwProvisioner()
-                .isSuitableForContainer(container, container.getCurrentRequestedBw()));
+        return (getContainerScheduler().getPeCapacity() >= container.getCurrentRequestedMaxMips() &&
+                getContainerScheduler().getAvailableMips() >= container.getWorkloadTotalMips() &&
+                getContainerRamProvisioner().isSuitableForContainer(container, container.getCurrentRequestedRam()) &&
+                getContainerBwProvisioner().isSuitableForContainer(container, container.getCurrentRequestedBw())
+        );
     }
 
        /**
