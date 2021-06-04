@@ -68,7 +68,7 @@ public abstract class PowerContainerAllocationPolicy extends ContainerAllocation
          */
         public ContainerVm findVmForContainer(Container container) {
             for (ContainerVm containerVm : getContainerVmList()) {
-                Log.printConcatLine(CloudSim.clock(), ": findVmForContainer: Trying vm #",containerVm.getId(),"For container #", container.getId());
+                Log.printConcatLine(CloudSim.clock(), ": findVmForContainer: Trying vm #",containerVm.getId()," For container #", container.getId());
                 if (containerVm.isSuitableForContainer(container)) {
                     return containerVm;
                 }

@@ -399,7 +399,8 @@ public class ContainerDatacenterBroker extends SimEntity {
         ContainerCloudlet cloudlet = (ContainerCloudlet) ev.getData();
         getCloudletReceivedList().add(cloudlet);
         Log.printConcatLine(CloudSim.clock(), ": ", getName(), String.format(": Cloudlet #%4d", cloudlet.getCloudletId()), " finished, ",
-                            "#containers finished so far: ", getCloudletReceivedList().size());
+                            "#cloudlets finished so far: ", getCloudletReceivedList().size());
+        // Log.printConcatLine("cloudlet list size: ", getCloudletList().size(), " container list size: ", containerList.size());
         cloudletsSubmitted--;
         if (getCloudletList().size() == 0 && cloudletsSubmitted == 0) { // all cloudlets executed
             Log.printConcatLine(CloudSim.clock(), ": ", getName(), ": All Cloudlets executed. Finishing...");
