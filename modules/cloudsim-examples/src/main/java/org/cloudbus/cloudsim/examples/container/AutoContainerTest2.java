@@ -116,8 +116,8 @@ public class AutoContainerTest2 {
             /**
              * 9- Creating the cloudlet, container and VM lists for submitting to the broker.
              */
-            cloudletList = AlibabaConstant.createContainerCloudletListConstant(brokerId, 30);
-            containerList = AlibabaConstant.createContainerList(brokerId, 30);
+            cloudletList = AlibabaConstant.createContainerCloudletListConstant(brokerId, 90);
+            containerList = AlibabaConstant.createContainerList(brokerId, 90);
             vmList = AlibabaConstant.createVmList(brokerId);
             vmList.get(0).setHost(smallHost);
             vmList.get(1).setHost(mediumHost);
@@ -292,9 +292,12 @@ public class AutoContainerTest2 {
         ContainerDatacenterCharacteristics characteristics = new
                 ContainerDatacenterCharacteristics(arch, os, vmm, hostList, time_zone, cost, costPerMem, costPerStorage,
                 costPerBw);
-        ContainerDatacenter datacenter = new PowerContainerDatacenterCM(name, characteristics, vmAllocationPolicy,
+        ContainerDatacenter datacenter = new MyPowerContainerDatacenterCM(name, characteristics, vmAllocationPolicy,
                 containerAllocationPolicy, new LinkedList<Storage>(), schedulingInterval, experimentName, logAddress,
                 VMStartupDelay, ContainerStartupDelay);
+//        ContainerDatacenter datacenter = new PowerContainerDatacenterCM(name, characteristics, vmAllocationPolicy,
+//                containerAllocationPolicy, new LinkedList<Storage>(), schedulingInterval, experimentName, logAddress,
+//                VMStartupDelay, ContainerStartupDelay);
 //        ContainerDatacenter datacenter = new PowerContainerDatacenter(name, characteristics, vmAllocationPolicy,
 //                containerAllocationPolicy, new LinkedList<Storage>(), schedulingInterval, experimentName, logAddress
 //        );
